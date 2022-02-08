@@ -7,7 +7,7 @@ let surname;
 let age;
 let nuevaPersona = {'name': '', 'surname': '', 'age': ''};
 
-function crearNuevoObjeto(){
+function crearNuevoObjeto(objeto){
 
     readline.question('Como te llamas?', nombre =>{
         id = nombre;
@@ -15,22 +15,18 @@ function crearNuevoObjeto(){
             surname = apellido;
             readline.question('Que edad tiene?', edad =>{
                 age = edad;
+                
             })
         }) 
     });
 
    setTimeout(function(){
-    nuevaPersona = {'name': id, 'surname': surname, 'age': age};
     
+    nuevaPersona = {'name': id, 'surname': surname, 'age': age};
+    objeto(nuevaPersona);
     readline.close();
    }, 8000);
-  
-   async function devolver(){
-       await nuevaPersona;
-   }
-
-   setTimeout(devolver());
-       
+         
 }
 
 
