@@ -22,6 +22,9 @@ function crearPersona (){
                     persona.age = edad;
                     resolve (persona);
         })
+        .catch(err =>{
+            console.log(err)
+        })
     })
     return rC;
     

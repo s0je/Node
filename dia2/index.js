@@ -3,8 +3,10 @@ const writeAndRead = require ('./promiseWriteAndRead');
 
 readConsole.crearPersona()
 .then(objeto =>{
-    writeAndRead.crearPromesa(objeto)
+    return writeAndRead.crearPromesa(objeto)
 })
-
+.catch(err=>{
+    console.log(err)
+})
 
 
