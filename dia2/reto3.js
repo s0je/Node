@@ -1,57 +1,47 @@
 const readline = require("readline");
 const fsPromise = require("fs/promises");
 
-let id;
-let surname;
-let age;
 let persona = {
                 'name': '',
                 'surname': '',
                 'age': ''
                 };
 
-function pregunta(){
-    const question = new Promise((resolve)=>{
+function pregunta(pregunta){
+    let question = new Promise((resolve,reject)=>{
         const rl = readline.createInterface({
             input: process.stdin,
             output: process.stdout
         });
 
-        rl.question('Como te llamas?', nombre =>{
-            resolve(nombre);
-            rl.question('Cual es su apellido?', apellido =>{
-                resolve(apellido);
-                rl.question('Que edad tiene?', edad =>{
-                    resolve(edad);
-                    rl.close();
-                })
-                .then(data =>{
-                    age = data;
-                    return age;
-                })
-            })
-            .then(data =>{
-                surname = data;
-                return surname
-            })
-        })
-        .then(data =>{
-            id = data;
-            return id;
-        })
-        .then(() =>{
-            question = {'name': id, 'surname': surname, 'age': age};
-        })
-        
-        return question;    
+        rl.question(pregunta, data =>{
+            resolve(data);
+            rl.close();    
+        })     
     })
-    // .then(data =>{
-    //     data = {'name': id, 'surname': surname, 'age': age};
-    //     console.log(data);
-    // })
-    // .catch(err =>{
-    //     console.log(err)
-    // })    
+    return question;
 }
 
-pregunta();
+
+pregunta('como te llamas?')
+.then(id =>{
+    persona.name = id;
+    return pregunta('Cual es tu apellido?')
+})
+.then(apellido =>{
+        persona.surname = apellido;
+        return pregunta('Que edad tienes?')
+})
+.then(edad =>{
+            persona.age = edad;
+            return fsPromise.writeFile('persona.json', JSON.stringify(persona), 'utf8')
+})
+.then(()=>{
+    return fsPromise.readFile('persona.json')
+.then(function(result){
+    console.log(""+result);
+    })
+})
+.catch(err =>{
+    console.log(err)
+})
