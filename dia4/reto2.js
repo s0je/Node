@@ -14,7 +14,7 @@ let Almodovar = new Professional ("https://m.media-amazon.com/images/M/MV5BMGM2N
 let Tarantino = new Professional ("https://m.media-amazon.com/images/M/MV5BMTgyMjI3ODA3Nl5BMl5BanBnXkFtZTcwNzY2MDYxOQ@@._V1_UX214_CR0,0,214,317_AL_.jpg","Quentin Tarantino",58, "Masculino", 188, 96, "blanco", "caucasico", false, "americano", 1, "Director");
 let JamieFoxx = new   Professional ("https://m.media-amazon.com/images/M/MV5BMTkyNjY1NDg3NF5BMl5BanBnXkFtZTgwNjA2MTg0MzE@._V1_UY317_CR12,0,214,317_AL_.jpg","Jamie Foxx", 54, "Masculino", 175, 82, "negro", "afroamericano", false, "americano", 2, "Actor");
 let Jennifer = new Professional ("https://m.media-amazon.com/images/M/MV5BMTY0OTY3ODA3OV5BMl5BanBnXkFtZTcwMzMyMzQ1NQ@@._V1_UY317_CR32,0,214,317_AL_.jpg","Jennifer Lopez", 56, "Femenino", 178, 75, "castaño", "latina", false, "americano", 0, "Actriz");
-let actores = [DiCaprio, Denzel,Almodovar, Tarantino, JamieFoxx, Jennifer];
+let actores = [];
 let profesional = new Professional;
 
 app.get("/", 
@@ -30,17 +30,16 @@ app.get("/profesionales",
             {
                 let id = request.query.id;
                 let respuesta = '';
-                if(id == null)
+                if(!actores.length)
                 {
-                    for(let i =0; i<actores.length; i++){
-
-                        respuesta += actores[i].printAll();
-                    }
+                
+                respuesta = {error: true, codigo: 200, mensaje: "No hay profesionales"};
+                
                 } else if(id != null && id <= actores.length && id >= 0)
                 {
-                respuesta = actores[id].printAll();
+                respuesta = actores[id];
                 }else {
-                respuesta = {error: true, codigo: 200, mensaje: "El profesional no existe"};
+                    respuesta = actores;
                 }
 
                 response.send(respuesta);
