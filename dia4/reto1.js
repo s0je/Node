@@ -36,20 +36,20 @@ app.post("/profesional",
                 let respuesta;
                 if(profesional === null)
                 {
-                    profesional = {
-                        image : request.body.image,
-                        name : request.body.name,
-                        age : request.body.age,
-                        genre : request.body.genre,
-                        weight : request.body.weight,
-                        height : request.body.height,
-                        hairColor : request.body.hairColor,
-                        race : request.body.race,
-                        isRetired : request.body.isRetired,
-                        nationality : request.body.nationality,
-                        oscarsNumber : request.body.oscarsNumber,
-                        profesion : request.body.profesion
-                    }
+                    profesional = new Professional (
+                        request.body.image,
+                        request.body.name,
+                        request.body.age,
+                        request.body.genre,
+                        request.body.weight,
+                        request.body.height,
+                        request.body.hairColor,
+                        request.body.race,
+                        request.body.isRetired,
+                        request.body.nationality,
+                        request.body.oscarsNumber,
+                        request.body.profesion
+                    )
                     respuesta   = {error: false, codigo: 200, 
                         mensaje: 'Profesional creado',resultado: profesional};
                 }else{

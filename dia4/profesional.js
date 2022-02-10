@@ -18,7 +18,7 @@ class Professional{
 
     printAll()
     {
-        return (`Image : ${this.image}\n Name: ${this.name}\n Genre: ${this.genre}\n Weigth: ${this.weight}\n Height: ${this.height}\n Hair color: ${this.hairColor}\n Race: ${this.race}\n Is retired?: ${this.isRetired}\n Nationality: ${this.nationality}\n Number of Oscars: ${this.oscarsNumber} \n Profession: ${this.profesion}`);
+       console.log(`Image : ${this.image}\n Name: ${this.name}\n Genre: ${this.genre}\n Weigth: ${this.weight}\n Height: ${this.height}\n Hair color: ${this.hairColor}\n Race: ${this.race}\n Is retired?: ${this.isRetired}\n Nationality: ${this.nationality}\n Number of Oscars: ${this.oscarsNumber} \n Profession: ${this.profesion}`);
     }
 }
 
