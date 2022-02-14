@@ -1,9 +1,12 @@
-// A $( document ).ready() block.
 $(document).ready(function() {
   $('#menu_on').click(function(){
     $('body').toggleClass('visible_menu');
-  })
+  });
 });
+$('#myToast').on('show.bs.toast', function () {
+  $("#toast1").toast("show");
+})
+
 class Professional{
 
   constructor( image, name, age, genre, weight, height, hairColor, race, isRetired, nationality, oscarsNumber, profesion)
@@ -121,6 +124,9 @@ async function mostrarId()
                           </div>
                         </div>`;
           document.getElementById("profesional").innerHTML = textTemp;
+          $('#myCollapse').on('shown.bs.collapse', function (e) {
+            // Action to execute once the collapsible area is expanded
+          })
         }
         
     catch(err) 
