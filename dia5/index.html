@@ -30,12 +30,24 @@
 		</nav>
 	</section>
 	<section id="content">
+		<img id="img" src="https://phandroid.com/wp-content/uploads/2011/07/imdb-banner.jpeg" class="img-fluid" alt="...">
+		<div id="buscar" class="mb-3">
+			<form >
+				<div class="row">
+					<div class="col">
+						<label for="exampleFormControlInput1">Id</label>
+						<input type="text" class="form-control" id="buscarId" placeholder="Id del profesional">
+						<button id="show" type="button" onclick="mostrarId()" class="btn btn-primary" style="margin-top: 15px; margin-bottom: 15px;" >Profesional</button>
+					</div>
+				</div>
+			</form>
+		  </div>
 		<div id="borrador" class="mb-3">
 			<form >
 				<div class="row">
 					<div class="col">
 						<label for="exampleFormControlInput1">Id</label>
-						<input type="text" class="form-control" id="borrar_id" placeholder="Id del profesional que desea borrar">
+						<input type="text" class="form-control" id="borrar_id" placeholder="Id del profesional">
 						<button id="del" type="button" onclick="delProfesional()" class="btn btn-primary" style="margin-top: 15px; margin-bottom: 15px;" >Eliminar profesional</button>
 					</div>
 				</div>
