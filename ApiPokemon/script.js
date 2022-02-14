@@ -1,5 +1,4 @@
-const poke_container = document.getElementById('poke-container')
-const pokemon_count = 150
+const poke_container = document.getElementById('poke-container');
 const colors = {
     fire: '#FDDFDF',
     grass: '#DEFDE0',
@@ -14,16 +13,13 @@ const colors = {
 	psychic: '#eaeda1',
 	flying: '#F5F5F5',
 	fighting: '#E6E0D4',
-	normal: '#F5F5F5'
+	normal: '#F5F5F5',
+    dark: '#CDCDCD',
+    fairy: '#FFCBDB',
+    steel: '#ACB2B4'
 }
 
 const color_types = Object.keys(colors)
-
-// const fetchPokemons = async () => {
-//     for(let i = 1; i <= pokemon_count; i++) {
-//         await getPokemon(i)
-//     }
-// }
 
 async function getPokemon(id)
 {
@@ -41,18 +37,13 @@ async function getPokemon(id)
     }
 }
 
-async function init()
+function init()
 {
-    try
-    {
-        
+
     let id = document.getElementById("id").value;
-    const pokemon = await getPokemon(id);
-    }
-    catch(err)
-    {
-        console.log(err);
-    }
+    const pokemon = getPokemon(id);
+    console.log(pokemon);
+
 }
 function crearCard(pokemon)
 {
@@ -61,9 +52,7 @@ function crearCard(pokemon)
 
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
     const ability1 = pokemon.abilities[0].ability.name;
-    const ability2 = pokemon.abilities[1].ability.name;
     const move1 = pokemon.moves[0].move.name;
-    const move2 = pokemon.moves[1].move.name;
     const id = pokemon.id.toString().padStart(3, '0')
     const poke_types = pokemon.types.map(type => type.type.name)
     const type = color_types.find(type => poke_types.indexOf(type) > -1)
@@ -87,33 +76,15 @@ function crearCard(pokemon)
         <tr>
         <th scope="col">#</th>
         <th scope="col">Habilidad 1</th>
-        <th scope="col">Habilidad 2</th>
         </tr>
     </thead>
     <tbody>
         <tr>
         <th scope="row">Habilidad</th>
         <td>${ability1}</td>
-        <td>${ability2}</td>
         </tr>
     </tbody>
     </table>
-    <table class="table">
-    <thead>
-        <tr>
-        <th scope="col">#</th>
-        <th scope="col">Movimiento 1</th>
-        <th scope="col">Movimiento 2</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <th scope="row">Movimientos</th>
-        <td>${move1}</td>
-        <td>${move2}</td>
-        </tr>
-    </tbody>
-</table>
     </div>
     `
 
