@@ -49,14 +49,11 @@ function crearCard(pokemon)
 {
     const pokeCard = document.createElement('div')
     pokeCard.classList.add('pokemon')
-
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
     const ability1 = pokemon.abilities[0].ability.name;
-    const move1 = pokemon.moves[0].move.name;
     const id = pokemon.id.toString().padStart(3, '0')
     const poke_types = pokemon.types.map(type => type.type.name)
-    const type = color_types.find(type => poke_types.indexOf(type) > -1)
-    
+    const type = color_types.find(type => poke_types.indexOf(type) > -1)    
     const color = colors[type]
 
     pokeCard.style.backgroundColor = color
@@ -78,7 +75,7 @@ function crearCard(pokemon)
         <th scope="col">Habilidad 1</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="tBody">
         <tr>
         <th scope="row">Habilidad</th>
         <td>${ability1}</td>
@@ -87,10 +84,18 @@ function crearCard(pokemon)
     </table>
     </div>
     `
-
     pokeCard.innerHTML = pokeTemp
-
     poke_container.appendChild(pokeCard)
+}
+
+function addInfo(valor)
+{
+    let tbody = document.getElementById("tBody")
+    let temp = `<tr>
+    <th scope="row">Descripcion</th>
+    <td scope="col">${valor}</td>
+    </tr>`
+    tbody.innerHTML = temp;
 }
 
 
