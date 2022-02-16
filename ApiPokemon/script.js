@@ -59,8 +59,10 @@ async function crearCard(pokemon)
         {
             
             temp += 
-                    `<th scope="row">${j}</th>
-                    <td>${abi.ability.name}</td> `
+                    `<tr id="habilidad">
+                    <th scope="row">${j}</th>
+                    <td>${abi.ability.name}</td>
+                    </tr> `
             j++;
         }
         console.log(temp);
@@ -72,9 +74,7 @@ async function crearCard(pokemon)
                         </tr>
                         </thead>
                         <tbody>
-                        <tr id="habilidad">
                          ${temp}                         
-                        </tr>
                         </tbody>
                     </table>`
         pokeCard.innerHTML = pokeTemp + table
