@@ -100,6 +100,8 @@ async function mostrarId()
         let data = await fetch(url,param)
         let resul = await data.json()
         let textTemp='';
+        if(buscar != '')
+        {
         console.log(resul);
             textTemp +=`<div class="col">
                           <div class="card" style="width: 18rem;">
@@ -124,12 +126,14 @@ async function mostrarId()
                           </div>
                         </div>`;
           document.getElementById("profesional").innerHTML = textTemp;
-          $('#myCollapse').on('shown.bs.collapse', function (e) {
-            // Action to execute once the collapsible area is expanded
-          })
+
+        }else {
+
+          mostrar()
+
         }
         
-    catch(err) 
+      }catch(err) 
         {
           console.log(err);
         }
@@ -238,6 +242,8 @@ async function delProfesional()
 }
 function crearProfesional()
 {
+  let img = document.getElementById("img");
+  img.style.cssText = 'visibility: hidden;	display: none;';
   let mostrar = document.getElementById("buscar");
   mostrar.style.cssText = 'visibility: hidden;	display: none;'
   document.getElementById("profesional").innerHTML = '';
@@ -256,25 +262,31 @@ function crearProfesional()
 }
 function update()
 {
+  let img = document.getElementById("img");
+  img.style.cssText = 'visibility: hidden;	display: none;';
+  let update = document.getElementById("up");
+  update.style.cssText = "margin-top: 15px; margin-bottom: 15px; visibility: visivle; display: block";
   let mostrar = document.getElementById("buscar");
   mostrar.style.cssText = 'visibility: hidden;	display: none;'
   document.getElementById("profesional").innerHTML = '';
   let borrador = document.getElementById("borrador");
   borrador.style.cssText = 'visibility: hidden;	display: none;';
+  let add = document.getElementById("add");
+  add.style.cssText= "margin-top: 15px; margin-bottom: 15px; visibility: hidden; display: none";
   let id = document.getElementById("dato");
   id.style.cssText = 'visibility: visible;	display: block;';
   let form = document.getElementById("formulario");
   form.style.cssText = 'width: 100%; display: flex;  justify-content: center;visibility: visible;	display: block;';
   let borrar = document.getElementById("borrar");
   borrar.style.cssText ='width: 100%; display: flex;  justify-content: center;visibility: hidden;	display: none;';
-  let add = document.getElementById("add");
-  add.style.cssText= "margin-top: 15px; margin-bottom: 15px; visibility: hidden; display: none";
-  let update = document.getElementById("up");
-  update.style.cssText = "margin-top: 15px; margin-bottom: 15px; visibility: visible; display: block"; 
+  
+   
 }
 
 function borrar()
 {
+  let img = document.getElementById("img");
+  img.style.cssText = 'visibility: hidden;	display: none;';
   let mostrar = document.getElementById("buscar");
   mostrar.style.cssText = 'visibility: hidden;	display: none;'
   document.getElementById("profesional").innerHTML = '';
